@@ -3,23 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jared — Your Neighborhood Handyman | Warfleigh &amp; Broad Ripple, Indianapolis</title>
+<title>Got it — talk soon | Jared, Your Neighborhood Handyman</title>
+<meta name="robots" content="noindex">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F2B90D'/%3E%3Ctext x='32' y='47' font-family='Arial Narrow,Arial,sans-serif' font-size='42' font-weight='bold' text-anchor='middle' fill='%23212821'%3EJK%3C/text%3E%3C/svg%3E">
-<meta name="description" content="Jared Kempson is the handyman down the street in Warfleigh, Indianapolis. No trip fee, fast estimates on small jobs, honest prices. Serving Warfleigh, Broad Ripple & Meridian-Kessler.">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "HomeAndConstructionBusiness",
-  "name": "Unconventional Possibilities LLC",
-  "alternateName": "Jared the Neighborhood Handyman",
-  "description": "Neighborhood handyman service. Small repairs, honest prices, no trip fee.",
-  "email": "jared@unconventionalpossibilities.com",
-  "telephone": "+13176614048",
-  "url": "https://unconventionalpossibilities.com",
-  "areaServed": ["Warfleigh, Indianapolis IN", "Broad Ripple, Indianapolis IN", "Meridian-Kessler, Indianapolis IN"],
-  "founder": { "@type": "Person", "name": "Jared Kempson" }
-}
-</script>
 <style>
   @font-face {
     font-family: 'Barlow Condensed';
@@ -41,14 +27,8 @@
     --body: Charter, "Bitstream Charter", "Iowan Old Style", Georgia, "Times New Roman", serif;
   }
 
-  ::selection { background: var(--yellow); color: var(--ink); }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-  }
+  ::selection { background: var(--yellow); color: var(--ink); }
 
   body {
     background: var(--paper);
@@ -56,24 +36,20 @@
     font-family: var(--body);
     font-size: 1.0625rem;
     line-height: 1.65;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 
-  .wrap {
-    max-width: 44rem;
-    margin: 0 auto;
-    padding: 0 1.25rem;
-  }
+  .wrap { max-width: 44rem; margin: 0 auto; padding: 0 1.25rem; width: 100%; }
 
   a { color: var(--pine); }
-  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  a:focus-visible {
     outline: 3px solid var(--pine);
     outline-offset: 2px;
   }
 
-  /* ---------- top bar ---------- */
-  header.top {
-    border-bottom: 2px solid var(--ink);
-  }
+  header.top { border-bottom: 2px solid var(--ink); }
   header.top .wrap {
     display: flex;
     justify-content: space-between;
@@ -103,36 +79,19 @@
   }
   .top-phone span { color: var(--quiet); }
 
-  /* ---------- labels & rules ---------- */
-  .label {
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: .95rem;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    color: var(--quiet);
-    display: block;
-    margin-bottom: 1.1rem;
-  }
-  section { border-top: 1px solid var(--rule); padding: 3rem 0 3.25rem; }
-  section:first-of-type { border-top: none; }
+  main { flex: 1; padding: 4.5rem 0 4rem; }
 
-  /* ---------- hero ---------- */
-  .hero { padding: 3.5rem 0 3rem; }
-  .hero h1 {
+  h1 {
     font-family: var(--display);
     font-weight: 700;
-    font-size: clamp(3.4rem, 11vw, 5.75rem);
+    font-size: clamp(3rem, 10vw, 4.75rem);
     line-height: .98;
     letter-spacing: -0.005em;
     text-wrap: balance;
     margin-bottom: 1.25rem;
   }
-  .hero h1 .mark {
-    position: relative;
-    white-space: nowrap;
-  }
-  .hero h1 .mark::before {
+  h1 .mark { position: relative; white-space: nowrap; }
+  h1 .mark::before {
     content: "";
     position: absolute;
     left: -0.08em; right: -0.08em;
@@ -142,36 +101,38 @@
     z-index: -1;
     transform: rotate(-0.6deg);
   }
-  .hero .intro {
-    font-size: 1.2rem;
-    max-width: 34rem;
-    margin-bottom: .9rem;
-  }
-  .hero .lede {
-    max-width: 36rem;
-    color: var(--ink);
-    margin-bottom: 1.5rem;
-  }
-  .hero .area {
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: .95rem;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    color: var(--quiet);
-    margin-bottom: 2rem;
-  }
   @media (prefers-reduced-motion: no-preference) {
-    .hero h1 .mark::before {
+    h1 .mark::before {
       transform-origin: left center;
-      animation: swipe .55s cubic-bezier(.16, 1, .3, 1) .25s backwards;
+      animation: swipe .55s cubic-bezier(.16, 1, .3, 1) .2s backwards;
     }
     @keyframes swipe {
       from { transform: scaleX(0) rotate(-0.6deg); }
       to { transform: scaleX(1) rotate(-0.6deg); }
     }
   }
-  .cta-row { display: flex; flex-wrap: wrap; gap: .75rem; }
+
+  .lede { font-size: 1.2rem; max-width: 34rem; margin-bottom: 2rem; }
+
+  .next {
+    border-top: 1px solid var(--rule);
+    padding-top: 1.75rem;
+    max-width: 36rem;
+  }
+  .next p { margin-bottom: 1rem; }
+  .next .big-phone {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(2.1rem, 8vw, 3.2rem);
+    letter-spacing: .01em;
+    color: var(--ink);
+    text-decoration: none;
+    display: inline-block;
+    margin: .2rem 0;
+  }
+  .next .big-phone:hover { color: var(--pine); }
+  .next .quiet { color: var(--quiet); font-size: .95rem; }
+
   .btn {
     font-family: var(--display);
     font-weight: 700;
@@ -183,226 +144,14 @@
     border: 2px solid var(--ink);
     color: var(--ink);
     background: transparent;
-    cursor: pointer;
     display: inline-block;
+    margin-top: 2rem;
   }
-  .btn.primary { background: var(--yellow); }
   .btn:hover { background: #F0F0EA; }
-  .btn.primary:hover { background: #E5AC05; }
 
-  /* ---------- the deal ---------- */
-  .deal-list { list-style: none; }
-  .deal-list li {
-    padding: 1.1rem 0;
-    border-bottom: 1px solid var(--rule);
-    max-width: 38rem;
-  }
-  .deal-list li:last-child { border-bottom: none; }
-  .deal-list b {
-    font-family: var(--display);
-    font-weight: 700;
-    display: block;
-    font-size: 1.35rem;
-    letter-spacing: .01em;
-    margin-bottom: .15rem;
-  }
-  .pull {
-    font-size: 1.7rem;
-    font-style: italic;
-    line-height: 1.3;
-    max-width: 30rem;
-    margin-top: 2.5rem;
-    text-indent: -0.45em;
-    text-wrap: balance;
-  }
-  .pull small {
-    display: block;
-    font-family: var(--display);
-    font-style: normal;
-    font-size: .9rem;
-    font-weight: 700;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--quiet);
-    margin-top: .6rem;
-  }
-
-  /* ---------- services ---------- */
-  .svc-cols {
-    columns: 2;
-    column-gap: 2.5rem;
-    max-width: 40rem;
-  }
-  @media (max-width: 540px) { .svc-cols { columns: 1; } }
-  .svc-cols ul { list-style: none; }
-  .svc-cols li {
-    padding: .45rem 0;
-    border-bottom: 1px solid var(--rule);
-    break-inside: avoid;
-  }
-  .svc-note {
-    max-width: 38rem;
-    margin-top: 1.75rem;
-    color: var(--ink);
-  }
-  .svc-note em { font-style: italic; }
-
-  /* ---------- free project (pine band) ---------- */
-  .band {
-    background: var(--pine);
-    color: #F2F4EC;
-    border-top: none;
-    padding: 3.25rem 0 3.5rem;
-  }
-  .band h2 {
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: clamp(2.3rem, 7vw, 3.4rem);
-    letter-spacing: 0;
-    line-height: 1.02;
-    text-wrap: balance;
-    margin-bottom: 1.1rem;
-  }
-  .band p { max-width: 37rem; margin-bottom: 1rem; }
-  .band a.btn {
-    border-color: #F2F4EC;
-    color: var(--pine);
-    background: #F2F4EC;
-    margin-top: .75rem;
-  }
-  .band a.btn:hover { background: #E2E6D8; }
-
-  /* ---------- about ---------- */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 200px 1fr;
-    gap: 2rem;
-    align-items: start;
-    max-width: 42rem;
-  }
-  @media (max-width: 600px) { .about-grid { grid-template-columns: 1fr; } }
-  .photo {
-    border: 2px solid var(--ink);
-    aspect-ratio: 4 / 5;
-    overflow: hidden;
-    background: #E8EAE0;
-    position: relative;
-  }
-  .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .photo.pending img { display: none; }
-  .photo.pending::after {
-    content: "Photo of Jared coming soon. He’s picking one where he isn’t mid-swing.";
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    font-family: var(--ui);
-    font-size: .8rem;
-    font-weight: 600;
-    line-height: 1.5;
-    color: var(--quiet);
-  }
-  .about-text p { margin-bottom: 1rem; max-width: 36rem; }
-  .about-text .motto { font-style: italic; }
-
-  /* ---------- form ---------- */
-  .form-note { max-width: 36rem; margin-bottom: 1.75rem; }
-  form { max-width: 36rem; }
-  .field { margin-bottom: 1.35rem; }
-  .field label {
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: .95rem;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: var(--ink);
-    display: block;
-    margin-bottom: .4rem;
-  }
-  .field .hint {
-    font-size: .85rem;
-    color: var(--quiet);
-    font-family: var(--body);
-    letter-spacing: 0;
-    text-transform: none;
-    font-weight: 400;
-    display: block;
-    margin-top: .25rem;
-  }
-  input[type="text"], input[type="email"], input[type="tel"], textarea {
-    width: 100%;
-    border: 2px solid var(--ink);
-    background: #FFFFFF;
-    font-family: var(--body);
-    font-size: 1rem;
-    padding: .65rem .75rem;
-    border-radius: 0;
-  }
-  textarea { min-height: 7.5rem; resize: vertical; }
-  input[type="file"] {
-    width: 100%;
-    border: 2px solid var(--ink);
-    background: #FFFFFF;
-    font-family: var(--ui);
-    font-size: .9rem;
-    padding: .55rem .75rem;
-  }
-  input[type="file"]::file-selector-button {
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: .95rem;
-    letter-spacing: .03em;
-    text-transform: uppercase;
-    border: 2px solid var(--ink);
-    background: var(--paper);
-    color: var(--ink);
-    padding: .3rem .8rem;
-    margin-right: .8rem;
-    cursor: pointer;
-  }
-
-  .kind-toggle { display: flex; flex-wrap: wrap; gap: .6rem; }
-  .kind-toggle input { position: absolute; opacity: 0; }
-  .kind-toggle label {
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: 1.05rem;
-    letter-spacing: .03em;
-    text-transform: none;
-    border: 2px solid var(--ink);
-    padding: .5rem 1rem .6rem;
-    cursor: pointer;
-    margin-bottom: 0;
-  }
-  .kind-toggle input:checked + label { background: var(--yellow); }
-  .kind-toggle input:focus-visible + label { outline: 3px solid var(--pine); outline-offset: 2px; }
-
-  .or-contact {
-    margin-top: 2.5rem;
-    padding-top: 1.75rem;
-    border-top: 1px solid var(--rule);
-    max-width: 36rem;
-  }
-  .or-contact .big-phone {
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: clamp(2.1rem, 8vw, 3.2rem);
-    letter-spacing: .01em;
-    color: var(--ink);
-    text-decoration: none;
-    display: inline-block;
-    margin: .3rem 0 .2rem;
-  }
-  .or-contact .big-phone:hover { color: var(--pine); }
-  .or-contact p { color: var(--ink); }
-  .or-contact .quiet { color: var(--quiet); font-size: .95rem; }
-
-  /* ---------- footer ---------- */
   footer {
     background: var(--ink);
     color: #C9CFC2;
-    margin-top: 3rem;
     padding: 2.25rem 0;
     font-family: var(--ui);
     font-size: .85rem;
@@ -418,162 +167,25 @@
 
 <header class="top">
   <div class="wrap">
-    <a class="wordmark" href="#top">Jared — Neighborhood Handyman</a>
+    <a class="wordmark" href="/">Jared — Neighborhood Handyman</a>
     <a class="top-phone" href="tel:+13176614048"><span>call/text</span> (317) 661-4048</a>
   </div>
 </header>
 
-<main id="top">
+<main>
+  <div class="wrap">
+    <h1>Got it, <span class="mark">neighbor</span>.</h1>
+    <p class="lede">Your message landed in my inbox. I&rsquo;ll get back to you within a day &mdash;
+    usually a lot sooner.</p>
 
-  <section class="hero">
-    <div class="wrap">
-      <h1>Hi, <span class="mark">neighbor</span>.</h1>
-      <p class="intro">I&rsquo;m Jared &mdash; the handyman down the street.</p>
-      <p class="lede">I do everything big and small, but I specialize in the little everyday
-      things that get in the way: the door that sticks, the shelf that&rsquo;s been leaning in the
-      garage since March, the faucet with opinions.</p>
-      <p class="area">Warfleigh &middot; Broad Ripple &middot; Meridian-Kessler</p>
-      <div class="cta-row">
-        <a class="btn primary" href="#request">Request a hand</a>
-        <a class="btn" href="sms:+13176614048">Text me instead</a>
-      </div>
+    <div class="next">
+      <p>If it&rsquo;s urgent, don&rsquo;t wait on me to check email:</p>
+      <a class="big-phone" href="tel:+13176614048">(317) 661-4048</a>
+      <p class="quiet">Call or text, either works.</p>
     </div>
-  </section>
 
-  <section id="deal">
-    <div class="wrap">
-      <span class="label">The deal</span>
-      <ul class="deal-list">
-        <li><b>No trip fee.</b> I live here. Coming out to look at your problem isn&rsquo;t a
-        trip. It&rsquo;s a walk. Happy to stop by and talk it through.</li>
-        <li><b>Small jobs, fast answers.</b> Most little things I can price on the spot, and
-        often fix the same visit. Bigger installs get you scheduled right away.</li>
-        <li><b>Straight prices.</b> You&rsquo;ll know the number before I start. If I find more
-        once I&rsquo;m in there, I tell you first.</li>
-      </ul>
-      <blockquote class="pull">&ldquo;I&rsquo;m not free &mdash; but I&rsquo;m not as
-      expensive.&rdquo;<small>&mdash; me, every estimate</small></blockquote>
-    </div>
-  </section>
-
-  <section id="services">
-    <div class="wrap">
-      <span class="label">The small stuff (my specialty)</span>
-      <div class="svc-cols">
-        <ul>
-          <li>Shelves, curtain rods &amp; TV mounting</li>
-          <li>Pictures hung level the first time</li>
-          <li>Sticky doors &amp; loose hinges</li>
-          <li>Leaky faucets &amp; running toilets</li>
-          <li>Light fixtures, fans &amp; switches</li>
-          <li>Drywall patches &amp; paint touch-ups</li>
-          <li>Furniture assembly</li>
-          <li>Weather stripping &amp; drafty windows</li>
-          <li>Gutter &amp; yard cleanup days</li>
-          <li>Small carpentry &amp; repairs</li>
-        </ul>
-      </div>
-      <p class="svc-note">And the odd jobs that don&rsquo;t fit any category:
-      <em>unconventional possibilities</em> are kind of my thing. Bigger work too: decks,
-      bathroom refreshes, real renovations. I&rsquo;ve built two houses. And if a job truly needs
-      a specialist, I&rsquo;ll say so and point you to someone good.</p>
-    </div>
-  </section>
-
-  <section class="band" id="free">
-    <div class="wrap">
-      <h2>One free neighbor project a month. On the house.</h2>
-      <p>One Saturday a month, my four kiddos and I take on a couple-hour project for somebody
-      in the neighborhood, completely free. Yard cleanup, a wobbly mailbox, the shelf that
-      never got hung.</p>
-      <p>The point isn&rsquo;t the shelf. It&rsquo;s that when we&rsquo;re all out walking the
-      neighborhood, we actually know each other. That&rsquo;s the whole idea.</p>
-      <a class="btn" href="#request">Nominate yourself (or a neighbor who&rsquo;d never ask)</a>
-    </div>
-  </section>
-
-  <section id="about">
-    <div class="wrap">
-      <span class="label">Who&rsquo;s asking?</span>
-      <div class="about-grid">
-        <div class="photo" id="photo-frame">
-          <img src="jared.jpg" alt="Jared Kempson, your neighborhood handyman"
-               onerror="document.getElementById('photo-frame').classList.add('pending')">
-        </div>
-        <div class="about-text">
-          <p>I&rsquo;m Jared Kempson. Before I fixed houses, I spent years as a pediatric
-          nurse, which turns out to be perfect training for this work: show up calm,
-          listen first, don&rsquo;t make a mess, tell the truth.</p>
-          <p>I&rsquo;ve built two houses, I&rsquo;m raising four kids (still in progress), and
-          I live right here in Warfleigh.</p>
-          <p class="motto">There&rsquo;s the way to fix things, and the right way to fix
-          things. I only do the second one.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="request">
-    <div class="wrap">
-      <span class="label">Get a hand</span>
-      <p class="form-note">Tell me what&rsquo;s going on. Photos help a lot. This goes
-      straight to my inbox and I&rsquo;ll get back to you within a day.</p>
-
-      <form action="https://formsubmit.co/jared@unconventionalpossibilities.com" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="_subject" value="Website request — Neighborhood Handyman">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://unconventionalpossibilities.com/thank-you.html">
-        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-        <div class="field">
-          <label>What kind of request is this?</label>
-          <div class="kind-toggle">
-            <input type="radio" name="Request type" value="I've got a job" id="kind-job" checked>
-            <label for="kind-job">I&rsquo;ve got a job</label>
-            <input type="radio" name="Request type" value="Free monthly project nomination" id="kind-free">
-            <label for="kind-free">Free monthly project</label>
-          </div>
-        </div>
-
-        <div class="field">
-          <label for="f-name">Your name</label>
-          <input type="text" id="f-name" name="Name" required autocomplete="name">
-        </div>
-
-        <div class="field">
-          <label for="f-street">Street or cross-streets</label>
-          <input type="text" id="f-street" name="Street" autocomplete="street-address">
-          <span class="hint">So I know how close you are. (Spoiler: close.)</span>
-        </div>
-
-        <div class="field">
-          <label for="f-contact">Phone or email</label>
-          <input type="text" id="f-contact" name="Phone or email" required>
-        </div>
-
-        <div class="field">
-          <label for="f-desc">What needs doing?</label>
-          <textarea id="f-desc" name="What needs doing" required></textarea>
-        </div>
-
-        <div class="field">
-          <label for="f-photo">Photos (optional, but they help)</label>
-          <input type="file" id="f-photo" name="attachment" accept="image/*">
-        </div>
-
-        <button class="btn primary" type="submit">Send it over</button>
-      </form>
-
-      <div class="or-contact">
-        <p>Forms not your thing?</p>
-        <a class="big-phone" href="tel:+13176614048">(317) 661-4048</a>
-        <p class="quiet">Call or text, either works. Or email
-        <a href="mailto:jared@unconventionalpossibilities.com">jared@unconventionalpossibilities.com</a>.</p>
-      </div>
-    </div>
-  </section>
-
+    <a class="btn" href="/">Back to the site</a>
+  </div>
 </main>
 
 <footer>
