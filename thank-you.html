@@ -79,6 +79,16 @@
   }
   .top-phone span { color: var(--quiet); }
 
+  /* Brand + number share one line; below ~27rem they stop fitting side by side. */
+  @media (max-width: 27rem) {
+    .wordmark, .top-phone { font-size: .95rem; }
+    .top-phone span { display: none; }
+  }
+  @media (max-width: 21rem) {
+    header.top .wrap { display: block; }
+    .top-phone { display: block; margin-top: .15rem; }
+  }
+
   main { flex: 1; padding: 4.5rem 0 4rem; }
 
   h1 {
