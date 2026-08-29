@@ -316,7 +316,21 @@
     background: #E8EAE0;
     position: relative;
   }
-  .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  /* Slow rotation through the good ones: base portrait shows first and
+     whenever no overlay is up; each overlay owns a 6s slot with 1.5s
+     crossfades. Pure CSS — one 24s loop, staggered delays. */
+  .photo img.rot { opacity: 0; animation: photocycle 24s linear infinite; animation-delay: var(--d); }
+  @keyframes photocycle {
+    0% { opacity: 0; }
+    6.25% { opacity: 1; }
+    25% { opacity: 1; }
+    31.25% { opacity: 0; }
+    100% { opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .photo img.rot { display: none; }
+  }
   .photo.pending img { display: none; }
   .photo.pending::after {
     content: "Photo of Jared coming soon. He’s picking one where he isn’t mid-swing.";
@@ -528,6 +542,9 @@
         <div class="photo" id="photo-frame">
           <img src="jared.jpg" alt="Jared Kempson, your neighborhood handyman"
                onerror="document.getElementById('photo-frame').classList.add('pending')">
+          <img class="rot" style="--d:6s" src="jared-3.jpg" alt="" aria-hidden="true">
+          <img class="rot" style="--d:12s" src="jared-2.jpg" alt="" aria-hidden="true">
+          <img class="rot" style="--d:18s" src="jared-4.jpg" alt="" aria-hidden="true">
         </div>
         <div class="about-text">
           <p>I&rsquo;m Jared Kempson. Before I fixed houses, I spent a decade as a nurse
