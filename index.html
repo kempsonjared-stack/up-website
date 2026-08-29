@@ -208,6 +208,16 @@
   .btn:hover { background: #F0F0EA; }
   .btn.primary:hover { background: #E5AC05; }
 
+  /* sms: links are dead ends on most desktops. Mouse-and-hover devices get a
+     static chip showing the number to text from a phone; touch devices keep
+     the live sms: link (with a pre-filled opener so the ask travels with it). */
+  .btn.sms-desktop { display: none; }
+  @media (hover: hover) and (pointer: fine) {
+    .btn.sms-mobile { display: none; }
+    .btn.sms-desktop { display: inline-block; cursor: default; }
+    .btn.sms-desktop:hover { background: transparent; }
+  }
+
   /* ---------- the deal ---------- */
   .deal-list { list-style: none; }
   .deal-list li {
@@ -453,7 +463,8 @@
       <p class="area">Warfleigh &middot; Broad Ripple &middot; Meridian-Kessler</p>
       <div class="cta-row">
         <a class="btn primary" href="#request">Request a hand</a>
-        <a class="btn" href="sms:+13176614048">Text me instead</a>
+        <a class="btn sms-mobile" href="sms:+13176614048?&amp;body=Hi%20Jared%20%E2%80%94%20I%27ve%20got%20a%20little%20job%20for%20you%3A%20">Text me instead</a>
+        <span class="btn sms-desktop">Text me: (317) 661-4048</span>
       </div>
     </div>
   </section>
