@@ -139,9 +139,11 @@
   .hero { padding: 3.5rem 0 3rem; }
   /* Small rotating portrait beside the headline — same photocycle as the
      About frame. Personal, not huge; hidden on phones where text needs room. */
-  .hero-grid { display: grid; grid-template-columns: 1fr 100px; gap: 2rem; align-items: start; }
+  /* Column matches the header's call/text width so the portrait centers
+     directly under the phone number. */
+  .hero-grid { display: grid; grid-template-columns: 1fr 164px; gap: 1.5rem; align-items: start; }
   .hero-photo { border: 2px solid var(--ink); aspect-ratio: 4 / 5; overflow: hidden;
-                position: relative; margin-top: .65rem; }
+                position: relative; margin-top: .65rem; width: 100px; justify-self: center; }
   .hero-photo img { position: absolute; inset: 0; width: 100%; height: 100%;
                     object-fit: cover; display: block; }
   .hero-photo img.rot { opacity: 0; animation: photocycle 24s linear infinite;
