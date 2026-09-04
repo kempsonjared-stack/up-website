@@ -223,14 +223,15 @@
   .btn:hover { background: #F0F0EA; }
   .btn.primary:hover { background: #E5AC05; }
 
-  /* sms: links are dead ends on most desktops. Mouse-and-hover devices get a
-     static chip showing the number to text from a phone; touch devices keep
-     the live sms: link (with a pre-filled opener so the ask travels with it). */
-  .btn.sms-desktop { display: none; }
+  /* One primary button; texting is a quiet secondary line. sms: links are
+     dead ends on most desktops, so hover-and-mouse devices see the plain
+     number while touch devices get the live link with a pre-filled opener. */
+  .or-text { margin-top: .8rem; font-size: .95rem; color: var(--quiet); }
+  .or-text a { color: var(--pine); }
+  .sms-desktop { display: none; }
   @media (hover: hover) and (pointer: fine) {
-    .btn.sms-mobile { display: none; }
-    .btn.sms-desktop { display: inline-block; cursor: default; }
-    .btn.sms-desktop:hover { background: transparent; }
+    .sms-mobile { display: none; }
+    .sms-desktop { display: inline; }
   }
 
   /* ---------- the deal ---------- */
@@ -487,16 +488,14 @@
       <div class="hero-grid">
         <div>
           <h1>Hi, <span class="mark">neighbor</span>.</h1>
-          <p class="intro">I&rsquo;m Jared &mdash; the handyman down the street.</p>
-          <p class="lede">I do everything big and small, but I specialize in the little everyday
-          things that get in the way: the door that sticks, the shelf that&rsquo;s been leaning in the
-          garage since March, the faucet that won&rsquo;t stop dripping.</p>
+          <p class="intro">I&rsquo;m Jared &mdash; the handyman down the street.
+          Small jobs are my specialty.</p>
           <p class="area">Warfleigh &middot; Broad Ripple &middot; Meridian-Kessler</p>
           <div class="cta-row">
             <a class="btn primary" href="#request">Request a hand</a>
-            <a class="btn sms-mobile" href="sms:+13176614048?&amp;body=Hi%20Jared%20%E2%80%94%20I%27ve%20got%20a%20little%20job%20for%20you%3A%20">Text me instead</a>
-            <span class="btn sms-desktop">Text me: (317) 661-4048</span>
           </div>
+          <p class="or-text">or text me:
+            <a class="sms-mobile" href="sms:+13176614048?&amp;body=Hi%20Jared%20%E2%80%94%20I%27ve%20got%20a%20little%20job%20for%20you%3A%20">(317) 661-4048</a><span class="sms-desktop">(317) 661-4048</span></p>
         </div>
         <div class="hero-photo">
           <img src="jared.jpg" alt="Jared Kempson, your neighborhood handyman">
