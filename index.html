@@ -47,6 +47,14 @@
     --display: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
     --ui: system-ui, "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif;
     --body: Charter, "Bitstream Charter", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    /* Derived, not new brand colours: every hover/tint below used to be a
+       hardcoded hex that drifted from the palette. color-mix keeps ONE gold
+       and ONE paper, and computes the rest. brand.json stays the source. */
+    --paper-alt: #F2F4EC;
+    --tint:      color-mix(in srgb, var(--paper) 88%, var(--ink));
+    --gold-deep: color-mix(in srgb, var(--yellow) 88%, var(--ink));
+    --on-ink:     color-mix(in srgb, var(--paper) 78%, var(--ink));
+    --on-ink-dim: color-mix(in srgb, var(--paper) 52%, var(--ink));
   }
 
   ::selection { background: var(--yellow); color: var(--ink); }
@@ -205,12 +213,15 @@
     }
   }
   .cta-row { display: flex; flex-wrap: wrap; gap: .75rem; }
+  /* BUTTON role (brand.json type.roles.button). Was identical to the
+     eyebrow — condensed 700 uppercase tracked — so a button and a section
+     label looked like the same object. Sentence case, 600, normal tracking. */
   .btn {
     font-family: var(--display);
-    font-weight: 700;
-    font-size: 1.15rem;
-    letter-spacing: .05em;
-    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: .01em;
+    text-transform: none;
     text-decoration: none;
     padding: .75rem 1.4rem .85rem;
     border: 2px solid var(--ink);
@@ -220,8 +231,8 @@
     display: inline-block;
   }
   .btn.primary { background: var(--yellow); }
-  .btn:hover { background: #F0F0EA; }
-  .btn.primary:hover { background: #E5AC05; }
+  .btn:hover { background: var(--tint); }
+  .btn.primary:hover { background: var(--gold-deep); }
 
   /* One primary button; texting is a quiet secondary line. sms: links are
      dead ends on most desktops, so hover-and-mouse devices see the plain
@@ -242,11 +253,14 @@
     max-width: 38rem;
   }
   .deal-list li:last-child { border-bottom: none; }
+  /* SUBHEAD rung (brand.json type.scale.subhead). The page jumped from a 92px
+     hero to 17px body with nothing between, which is why hierarchy read flat.
+     This is the step. */
   .deal-list b {
     font-family: var(--display);
     font-weight: 700;
     display: block;
-    font-size: 1.35rem;
+    font-size: 1.75rem;
     letter-spacing: .01em;
     margin-bottom: .15rem;
   }
@@ -259,14 +273,17 @@
     text-indent: -0.45em;
     text-wrap: balance;
   }
+  /* ATTRIBUTION role (brand.json type.roles.attribution). Was condensed caps,
+     which made a quote credit read as a section header. Serif italic belongs
+     to the quote it follows. */
   .pull small {
     display: block;
-    font-family: var(--display);
-    font-style: normal;
-    font-size: .9rem;
-    font-weight: 700;
-    letter-spacing: .12em;
-    text-transform: uppercase;
+    font-family: var(--body);
+    font-style: italic;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
     color: var(--quiet);
     margin-top: .6rem;
   }
@@ -314,7 +331,7 @@
     background: #F2F4EC;
     margin-top: .75rem;
   }
-  .band a.btn:hover { background: #E2E6D8; }
+  .band a.btn:hover { background: var(--tint); }
 
   /* ---------- about ---------- */
   .about-grid {
@@ -329,7 +346,7 @@
     border: 2px solid var(--ink);
     aspect-ratio: 4 / 5;
     overflow: hidden;
-    background: #E8EAE0;
+    background: var(--tint);
     position: relative;
   }
   .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -368,12 +385,14 @@
   .form-note { max-width: 36rem; margin-bottom: 1.75rem; }
   form { max-width: 36rem; }
   .field { margin-bottom: 1.35rem; }
+  /* FORM LABEL role (brand.json type.roles.form_label). Was condensed caps
+     competing with the hero for attention. A label should recede. */
   .field label {
-    font-family: var(--display);
-    font-weight: 700;
-    font-size: .95rem;
-    letter-spacing: .12em;
-    text-transform: uppercase;
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0;
+    text-transform: none;
     color: var(--ink);
     display: block;
     margin-bottom: .4rem;
@@ -408,10 +427,10 @@
   }
   input[type="file"]::file-selector-button {
     font-family: var(--display);
-    font-weight: 700;
-    font-size: .95rem;
-    letter-spacing: .03em;
-    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: .01em;
+    text-transform: none;
     border: 2px solid var(--ink);
     background: var(--paper);
     color: var(--ink);
@@ -459,7 +478,7 @@
   /* ---------- footer ---------- */
   footer {
     background: var(--ink);
-    color: #C9CFC2;
+    color: var(--on-ink);
     margin-top: 3rem;
     padding: 2.25rem 0;
     font-family: var(--ui);
@@ -467,9 +486,9 @@
     line-height: 1.8;
   }
   footer .wrap { display: flex; flex-direction: column; gap: .2rem; }
-  footer a { color: #F2F4EC; text-decoration: none; }
+  footer a { color: var(--paper-alt); text-decoration: none; }
   footer a:hover { text-decoration: underline; }
-  footer .legal { color: #8B9384; margin-top: .6rem; }
+  footer .legal { color: var(--on-ink-dim); margin-top: .6rem; }
 </style>
 </head>
 <body>

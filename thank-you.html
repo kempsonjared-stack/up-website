@@ -25,6 +25,14 @@
     --display: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
     --ui: system-ui, "Segoe UI", -apple-system, "Helvetica Neue", Arial, sans-serif;
     --body: Charter, "Bitstream Charter", "Iowan Old Style", Georgia, "Times New Roman", serif;
+    /* Derived, not new brand colours: every hover/tint below used to be a
+       hardcoded hex that drifted from the palette. color-mix keeps ONE gold
+       and ONE paper, and computes the rest. brand.json stays the source. */
+    --paper-alt: #F2F4EC;
+    --tint:      color-mix(in srgb, var(--paper) 88%, var(--ink));
+    --gold-deep: color-mix(in srgb, var(--yellow) 88%, var(--ink));
+    --on-ink:     color-mix(in srgb, var(--paper) 78%, var(--ink));
+    --on-ink-dim: color-mix(in srgb, var(--paper) 52%, var(--ink));
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -143,12 +151,15 @@
   .next .big-phone:hover { color: var(--pine); }
   .next .quiet { color: var(--quiet); font-size: .95rem; }
 
+  /* BUTTON role (brand.json type.roles.button). Was identical to the
+     eyebrow — condensed 700 uppercase tracked — so a button and a section
+     label looked like the same object. Sentence case, 600, normal tracking. */
   .btn {
     font-family: var(--display);
-    font-weight: 700;
-    font-size: 1.15rem;
-    letter-spacing: .05em;
-    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1.2rem;
+    letter-spacing: .01em;
+    text-transform: none;
     text-decoration: none;
     padding: .75rem 1.4rem .85rem;
     border: 2px solid var(--ink);
@@ -157,20 +168,20 @@
     display: inline-block;
     margin-top: 2rem;
   }
-  .btn:hover { background: #F0F0EA; }
+  .btn:hover { background: var(--tint); }
 
   footer {
     background: var(--ink);
-    color: #C9CFC2;
+    color: var(--on-ink);
     padding: 2.25rem 0;
     font-family: var(--ui);
     font-size: .85rem;
     line-height: 1.8;
   }
   footer .wrap { display: flex; flex-direction: column; gap: .2rem; }
-  footer a { color: #F2F4EC; text-decoration: none; }
+  footer a { color: var(--paper-alt); text-decoration: none; }
   footer a:hover { text-decoration: underline; }
-  footer .legal { color: #8B9384; margin-top: .6rem; }
+  footer .legal { color: var(--on-ink-dim); margin-top: .6rem; }
 </style>
 </head>
 <body>
