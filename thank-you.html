@@ -182,6 +182,12 @@
   footer a { color: var(--paper-alt); text-decoration: none; }
   footer a:hover { text-decoration: underline; }
   footer .legal { color: var(--on-ink-dim); margin-top: .6rem; }
+  /* Text-first contact (2026-10-14): phones get sms: links, mouse users read the number. */
+  .sms-desktop { display: none !important; }
+  @media (hover: hover) and (pointer: fine) {
+    .sms-mobile { display: none !important; }
+    .sms-desktop { display: inline-block !important; }
+  }
 </style>
 </head>
 <body>
@@ -189,7 +195,7 @@
 <header class="top">
   <div class="wrap">
     <a class="wordmark" href="/">Jared — Neighborhood Handyman</a>
-    <a class="top-phone" href="tel:+13176614048"><span>call/text</span> (317) 661-4048</a>
+    <a class="top-phone sms-mobile" href="sms:+13176614048?&amp;body=Hi%20Jared%20%E2%80%94%20I%27ve%20got%20a%20little%20job%20for%20you%3A%20"><span>text</span> (317) 661-4048</a><span class="top-phone sms-desktop"><span>text</span> (317) 661-4048</span>
   </div>
 </header>
 
@@ -201,8 +207,8 @@
 
     <div class="next">
       <p>If it&rsquo;s urgent, don&rsquo;t wait on me to check email:</p>
-      <a class="big-phone" href="tel:+13176614048">(317) 661-4048</a>
-      <p class="quiet">Call or text, either works.</p>
+      <a class="big-phone sms-mobile" href="sms:+13176614048?&amp;body=Hi%20Jared%20%E2%80%94%20I%27ve%20got%20a%20little%20job%20for%20you%3A%20">Text (317) 661-4048</a><span class="big-phone sms-desktop">Text (317) 661-4048</span>
+      <p class="quiet">Texting is the fastest way to reach me.</p>
     </div>
 
     <a class="btn" href="/">Back to the site</a>
@@ -213,7 +219,7 @@
   <div class="wrap">
     <span>Unconventional Possibilities LLC &middot; Indianapolis, IN</span>
     <span>Serving Warfleigh, Broad Ripple &amp; Meridian-Kessler</span>
-    <span><a href="tel:+13176614048">(317) 661-4048</a> &middot; <a href="mailto:jared@unconventionalpossibilities.com">jared@unconventionalpossibilities.com</a></span>
+    <span><a class="sms-mobile" href="sms:+13176614048?&amp;body=Hi%20Jared%20%E2%80%94%20I%27ve%20got%20a%20little%20job%20for%20you%3A%20">Text (317) 661-4048</a><span class="sms-desktop">Text (317) 661-4048</span> &middot; <a href="mailto:jared@unconventionalpossibilities.com">jared@unconventionalpossibilities.com</a></span>
     <span class="legal">&copy; 2026 Unconventional Possibilities LLC. Your friendly neighborhood handyman.</span>
   </div>
 </footer>
