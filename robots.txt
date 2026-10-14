@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://unconventionalpossibilities.com/sitemap.xml

@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://unconventionalpossibilities.com/">
+<meta name="theme-color" content="#FAFAF7">
 <title>Jared — Your Neighborhood Handyman | Warfleigh &amp; Broad Ripple, Indianapolis</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F2B90D'/%3E%3Ctext x='32' y='47' font-family='Arial Narrow,Arial,sans-serif' font-size='42' font-weight='bold' text-anchor='middle' fill='%23212821'%3EJK%3C/text%3E%3C/svg%3E">
 <meta name="description" content="Jared Kempson is the handyman down the street in Warfleigh, Indianapolis. No trip fee, fast estimates on small jobs, honest prices. Serving Warfleigh, Broad Ripple & Meridian-Kessler.">
@@ -21,6 +23,7 @@
   "name": "Unconventional Possibilities LLC",
   "alternateName": ["Jared the Neighborhood Handyman", "Unconventional Possibilities Handyman Services"],
   "description": "Neighborhood handyman service. Small repairs, honest prices, no trip fee.",
+  "image": "https://unconventionalpossibilities.com/work/deck-front-after-1200.jpg",
   "email": "jared@unconventionalpossibilities.com",
   "telephone": "+13176614048",
   "url": "https://unconventionalpossibilities.com",
@@ -308,6 +311,32 @@
   }
   .svc-note em { font-style: italic; }
 
+  /* ---------- bigger stuff (2026-09-17 remodel proposal) ---------- */
+  /* brand.json paper_alt: "alternating section band, so long pages have
+     rhythm without a new colour." Full remodels get quiet separation without
+     touching the pine accent, which stays reserved for the free-project CTA
+     below — so this band doesn't compete with it for attention. */
+  #bigger { background: var(--paper-alt); }
+  /* SUBHEAD rung (brand.json type.scale.subhead, 32px) — added 2026-09-06 as
+     "the missing rung" between hero/title and body. First real use of it. */
+  #bigger .subhead {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 2rem;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+    margin-bottom: .85rem;
+    text-wrap: balance;
+  }
+  #bigger .lede {
+    font-size: 1.3125rem;
+    max-width: 36rem;
+    margin-bottom: 1.75rem;
+    color: var(--ink);
+  }
+  #bigger .svc-cols { margin-bottom: .5rem; }
+  #bigger .how-list { margin-top: 2rem; margin-bottom: 2rem; }
+
   /* ---------- free project (pine band) ---------- */
   .band {
     background: var(--pine);
@@ -489,6 +518,98 @@
   footer a { color: var(--paper-alt); text-decoration: none; }
   footer a:hover { text-decoration: underline; }
   footer .legal { color: var(--on-ink-dim); margin-top: .6rem; }
+
+  /* ---------- 2026-10-14: QR-traffic pass ---------- */
+  /* Header links were 25px tall: under the ~44px a thumb needs. Padding grows
+     the tap area; the negative margin keeps the bar's height unchanged. */
+  .wordmark, .top-phone { display: inline-block; padding: .7rem 0; margin: -.7rem 0; }
+
+  /* Phones get one real job photo in the first screen (QR visitors decide fast).
+     Desktop keeps the portrait column; the photo there is a 1px gif via <source>. */
+  .hero-work { display: none; }
+  @media (max-width: 640px) {
+    .hero-work { display: block; margin-top: 1.75rem; text-decoration: none; color: var(--quiet); }
+    .hero-work img { display: block; width: 100%; height: auto; border: 2px solid var(--ink); background: var(--tint); }
+    .hero-work span { display: block; font-size: .95rem; margin-top: .45rem; }
+  }
+
+  /* ---------- before & after ---------- */
+  /* Text stays in the page's 44rem column; on wide screens the photos break
+     out 9rem each side so they read as photos, not thumbnails. */
+  @media (min-width: 1000px) {
+    #work .pair-wide, #work .strip { margin-left: -9rem; margin-right: -9rem; }
+  }
+  #work .subhead, .job h3 {
+    font-family: var(--display);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+    text-wrap: balance;
+  }
+  #work .subhead { font-size: 2rem; margin-bottom: 2rem; }
+  .job { margin-bottom: 3rem; }
+  .job h3 { font-size: 1.6rem; margin-bottom: .4rem; }
+  .job > p { max-width: 36rem; margin-bottom: 1.1rem; }
+  .job figure { margin: 0; position: relative; }
+  .job img, .proof img { display: block; width: 100%; height: auto; border: 2px solid var(--ink); background: var(--tint); }
+  .job figcaption, .proof figcaption { font-size: .9rem; line-height: 1.35; margin-top: .4rem; color: var(--quiet); }
+  /* Before/After chips sit on the photo so the label survives a fast scroll. */
+  .tag {
+    position: absolute; top: .6rem; left: .6rem; z-index: 1;
+    font-family: var(--display); font-weight: 700; font-size: .95rem; letter-spacing: .04em;
+    text-transform: uppercase; padding: .1rem .55rem .15rem;
+    background: var(--ink); color: var(--paper);
+  }
+  .tag.after { background: var(--yellow); color: var(--ink); }
+  /* Pairs: both photos always visible (stacked on phones, side by side above).
+     No slider: these were shot days apart from roughly the same spot, and a
+     drag divider fights page scrolling on a phone. */
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+  .pair-wide { grid-template-columns: 1fr; }
+  @media (min-width: 641px) { .pair-wide { grid-template-columns: 1fr 1fr; } }
+  .pair-tall { max-width: 44rem; }
+  /* Swipe strip: the visitor moves it, nothing auto-advances (WCAG 2.2.2,
+     and people miss auto-rotating content). Peeks the next photo so the
+     swipe is obvious. Becomes a plain grid on wider screens. */
+  .more { font-family: var(--display); font-weight: 600; font-size: 1.15rem; margin: 1.6rem 0 .6rem; }
+  .more .hint { color: var(--quiet); font-weight: 500; }
+  .strip {
+    display: flex; gap: .75rem; overflow-x: auto; scroll-snap-type: x mandatory;
+    margin: 0 -1.25rem; padding: 0 1.25rem .6rem; scroll-padding-inline: 1.25rem;
+    scrollbar-width: thin; overscroll-behavior-x: contain;
+  }
+  .strip figure { flex: 0 0 78%; scroll-snap-align: start; }
+  .strip:focus-visible { outline: 3px solid var(--pine); outline-offset: 2px; }
+  @media (min-width: 641px) {
+    .strip { display: grid; grid-template-columns: repeat(3, 1fr); overflow: visible; margin: 0; padding: 0; }
+    .more .hint { display: none; }
+  }
+  #work .cta-row { margin-top: .5rem; }
+
+  /* Proof photos inside "I do that too". */
+  .proof { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; max-width: 36rem; margin: 1.75rem 0 .5rem; }
+  .proof figure { margin: 0; }
+
+  /* ---------- phone call/text bar ---------- */
+  /* Appears once the hero (with its own buttons) scrolls away; gets out of the
+     way at the form and footer. Phones only: desktops can't place a call. */
+  .quickbar {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+    display: grid; grid-template-columns: 1fr 1fr; gap: .6rem;
+    padding: .6rem 1rem calc(.6rem + env(safe-area-inset-bottom));
+    background: var(--paper); border-top: 2px solid var(--ink);
+    transform: translateY(110%); visibility: hidden;
+    transition: transform .25s ease, visibility 0s linear .25s;
+  }
+  .quickbar.show { transform: none; visibility: visible; transition: transform .25s ease; }
+  .quickbar a {
+    display: flex; align-items: center; justify-content: center; min-height: 48px;
+    font-family: var(--display); font-weight: 700; font-size: 1.2rem;
+    text-decoration: none; color: var(--ink); border: 2px solid var(--ink); background: var(--paper);
+  }
+  .quickbar a.call { background: var(--yellow); }
+  @media (min-width: 641px) { .quickbar { display: none; } }
+  @media (prefers-reduced-motion: reduce) { .quickbar, .quickbar.show { transition: none; } }
 </style>
 </head>
 <body>
@@ -515,6 +636,14 @@
           </div>
           <p class="or-text">or text me:
             <a class="sms-mobile" href="sms:+13176614048?&amp;body=Hi%20Jared%20%E2%80%94%20I%27ve%20got%20a%20little%20job%20for%20you%3A%20">(317) 661-4048</a><span class="sms-desktop">(317) 661-4048</span></p>
+          <a class="hero-work" href="#work">
+            <picture>
+              <source media="(min-width: 641px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+              <source type="image/webp" srcset="work/deck-hero-480.webp 480w, work/deck-hero-800.webp 800w, work/deck-hero-1200.webp 1200w" sizes="calc(100vw - 2.5rem)">
+              <img src="work/deck-hero-800.jpg" srcset="work/deck-hero-480.jpg 480w, work/deck-hero-800.jpg 800w, work/deck-hero-1200.jpg 1200w" sizes="calc(100vw - 2.5rem)" width="1200" height="800" alt="A back deck rebuilt with herringbone skirting, black railings and a pergola" fetchpriority="high">
+            </picture>
+            <span>A deck I rebuilt this fall. Before &amp; afters below &darr;</span>
+          </a>
         </div>
         <div class="hero-photo">
           <img src="jared.jpg" alt="Jared Kempson, your neighborhood handyman">
@@ -526,6 +655,45 @@
     </div>
   </section>
 
+
+  <section id="work">
+    <div class="wrap">
+      <span class="label">Before &amp; after</span>
+      <h2 class="subhead">Real jobs, start to finish.</h2>
+
+      <article class="job">
+        <h3>A whole deck, rebuilt.</h3>
+        <p>Front and back: new boards, new stairs, herringbone skirting and black
+        aluminum railings. Same house, same spot. May, then October.</p>
+        <div class="pair pair-wide">
+          <figure><span class="tag">Before</span><picture><source type="image/webp" srcset="work/deck-front-before-480.webp 480w, work/deck-front-before-800.webp 800w, work/deck-front-before-1200.webp 1200w" sizes="(max-width: 640px) calc(100vw - 2.5rem), 480px"><img src="work/deck-front-before-800.jpg" srcset="work/deck-front-before-480.jpg 480w, work/deck-front-before-800.jpg 800w, work/deck-front-before-1200.jpg 1200w" sizes="(max-width: 640px) calc(100vw - 2.5rem), 480px" width="1200" height="900" alt="The old front deck and steps, weathered grey, seen from the driveway" loading="lazy" decoding="async"></picture><figcaption>May.</figcaption></figure>
+          <figure><span class="tag after">After</span><picture><source type="image/webp" srcset="work/deck-front-after-480.webp 480w, work/deck-front-after-800.webp 800w, work/deck-front-after-1200.webp 1200w" sizes="(max-width: 640px) calc(100vw - 2.5rem), 480px"><img src="work/deck-front-after-800.jpg" srcset="work/deck-front-after-480.jpg 480w, work/deck-front-after-800.jpg 800w, work/deck-front-after-1200.jpg 1200w" sizes="(max-width: 640px) calc(100vw - 2.5rem), 480px" width="1200" height="900" alt="The same front deck rebuilt, with black railings and new steps, seen from the driveway" loading="lazy" decoding="async"></picture><figcaption>October.</figcaption></figure>
+        </div>
+        <p class="more">More of this deck <span class="hint">&middot; swipe &rarr;</span></p>
+        <div class="strip" role="region" aria-label="More photos of the deck rebuild" tabindex="0">
+          <figure><span class="tag">Before</span><picture><source type="image/webp" srcset="work/deck-back-before-480.webp 480w, work/deck-back-before-800.webp 800w, work/deck-back-before-1200.webp 1200w" sizes="(max-width: 640px) 78vw, 320px"><img src="work/deck-back-before-800.jpg" srcset="work/deck-back-before-480.jpg 480w, work/deck-back-before-800.jpg 800w, work/deck-back-before-1200.jpg 1200w" sizes="(max-width: 640px) 78vw, 320px" width="1200" height="1200" alt="The old back deck and steps, weathered grey" loading="lazy" decoding="async"></picture><figcaption>The back deck, May.</figcaption></figure>
+          <figure><span class="tag after">After</span><picture><source type="image/webp" srcset="work/deck-back-after-480.webp 480w, work/deck-back-after-800.webp 800w, work/deck-back-after-1200.webp 1200w" sizes="(max-width: 640px) 78vw, 320px"><img src="work/deck-back-after-800.jpg" srcset="work/deck-back-after-480.jpg 480w, work/deck-back-after-800.jpg 800w, work/deck-back-after-1200.jpg 1200w" sizes="(max-width: 640px) 78vw, 320px" width="1200" height="1200" alt="The rebuilt back deck with herringbone skirting, black railings and pergola" loading="lazy" decoding="async"></picture><figcaption>Same view, October.</figcaption></figure>
+          <figure><span class="tag">Before</span><picture><source type="image/webp" srcset="work/deck-stairs-before-480.webp 480w, work/deck-stairs-before-800.webp 800w, work/deck-stairs-before-1200.webp 1200w" sizes="(max-width: 640px) 78vw, 320px"><img src="work/deck-stairs-before-800.jpg" srcset="work/deck-stairs-before-480.jpg 480w, work/deck-stairs-before-800.jpg 800w, work/deck-stairs-before-1200.jpg 1200w" sizes="(max-width: 640px) 78vw, 320px" width="1200" height="1200" alt="Old deck steps down to a worn gravel path" loading="lazy" decoding="async"></picture><figcaption>The back stairs and path.</figcaption></figure>
+          <figure><span class="tag after">After</span><picture><source type="image/webp" srcset="work/deck-stairs-after-480.webp 480w, work/deck-stairs-after-800.webp 800w, work/deck-stairs-after-1200.webp 1200w" sizes="(max-width: 640px) 78vw, 320px"><img src="work/deck-stairs-after-800.jpg" srcset="work/deck-stairs-after-480.jpg 480w, work/deck-stairs-after-800.jpg 800w, work/deck-stairs-after-1200.jpg 1200w" sizes="(max-width: 640px) 78vw, 320px" width="1200" height="1200" alt="New stairs with black railings down to a re-edged gravel path" loading="lazy" decoding="async"></picture><figcaption>New stairs, re-edged path.</figcaption></figure>
+          <figure><picture><source type="image/webp" srcset="work/deck-skirting-480.webp 480w, work/deck-skirting-800.webp 800w, work/deck-skirting-1200.webp 1200w" sizes="(max-width: 640px) 78vw, 320px"><img src="work/deck-skirting-800.jpg" srcset="work/deck-skirting-480.jpg 480w, work/deck-skirting-800.jpg 800w, work/deck-skirting-1200.jpg 1200w" sizes="(max-width: 640px) 78vw, 320px" width="1200" height="1200" alt="Close-up of diagonal herringbone skirting under a black aluminum railing" loading="lazy" decoding="async"></picture><figcaption>Herringbone skirting, up close.</figcaption></figure>
+          <figure><picture><source type="image/webp" srcset="work/deck-midbuild-480.webp 480w, work/deck-midbuild-800.webp 800w, work/deck-midbuild-1200.webp 1200w" sizes="(max-width: 640px) 78vw, 320px"><img src="work/deck-midbuild-800.jpg" srcset="work/deck-midbuild-480.jpg 480w, work/deck-midbuild-800.jpg 800w, work/deck-midbuild-1200.jpg 1200w" sizes="(max-width: 640px) 78vw, 320px" width="1200" height="1200" alt="New deck boards down under the pergola, tools still out" loading="lazy" decoding="async"></picture><figcaption>Mid-build: boards down, railings next.</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="job">
+        <h3>A fence that stands up straight again.</h3>
+        <p>Leaning and shedding boards. Same stretch of fence, same afternoon.</p>
+        <div class="pair pair-tall">
+          <figure><span class="tag">Before</span><picture><source type="image/webp" srcset="work/fence-before-480.webp 480w, work/fence-before-800.webp 800w, work/fence-before-1200.webp 1200w" sizes="(max-width: 640px) calc(50vw - 1.7rem), 340px"><img src="work/fence-before-800.jpg" srcset="work/fence-before-480.jpg 480w, work/fence-before-800.jpg 800w, work/fence-before-1200.jpg 1200w" sizes="(max-width: 640px) calc(50vw - 1.7rem), 340px" width="1200" height="1600" alt="A wooden privacy fence leaning badly, loose boards on the gravel" loading="lazy" decoding="async"></picture></figure>
+          <figure><span class="tag after">After</span><picture><source type="image/webp" srcset="work/fence-after-480.webp 480w, work/fence-after-800.webp 800w, work/fence-after-1200.webp 1200w" sizes="(max-width: 640px) calc(50vw - 1.7rem), 340px"><img src="work/fence-after-800.jpg" srcset="work/fence-after-480.jpg 480w, work/fence-after-800.jpg 800w, work/fence-after-1200.jpg 1200w" sizes="(max-width: 640px) calc(50vw - 1.7rem), 340px" width="1200" height="1600" alt="The same fence rebuilt straight with new boards" loading="lazy" decoding="async"></picture></figure>
+        </div>
+      </article>
+
+      <div class="cta-row">
+        <a class="btn primary" href="#request">Got one like these? Request a hand</a>
+      </div>
+    </div>
+  </section>
   <section id="deal">
     <div class="wrap">
       <span class="label">The deal</span>
@@ -562,7 +730,46 @@
       <p class="svc-note">And the odd jobs that don&rsquo;t fit any category:
       <em>unconventional possibilities</em> are kind of my thing. Bigger work too: decks,
       bathroom refreshes, real renovations. I&rsquo;ve re-built two houses. And if a job truly needs
-      a specialist, I&rsquo;ll say so and point you to someone good.</p>
+      a specialist, I&rsquo;ll say so and point you to someone good. Bigger jobs get
+      <a href="#bigger">their own rundown below</a>.</p>
+    </div>
+  </section>
+
+  <section id="bigger">
+    <div class="wrap">
+      <span class="label">When it&rsquo;s bigger than that</span>
+      <h2 class="subhead">I do that too.</h2>
+      <p class="lede">Full remodels, not just the small stuff. Same guy, same straight
+      prices &mdash; just more of it.</p>
+
+      <div class="svc-cols">
+        <ul>
+          <li>Full deck builds &mdash; railings, stairs, skirting</li>
+          <li>Roof framing</li>
+          <li>Gas lines &amp; fire features</li>
+          <li>Water heater replacement</li>
+          <li>Bathroom refreshes</li>
+          <li>Office build-outs &mdash; walls, outlets, doors</li>
+        </ul>
+      </div>
+
+
+      <div class="proof">
+        <figure><picture><source type="image/webp" srcset="work/fire-feature-480.webp 480w, work/fire-feature-800.webp 800w, work/fire-feature-1200.webp 1200w" sizes="(max-width: 640px) calc(50vw - 1.7rem), 340px"><img src="work/fire-feature-800.jpg" srcset="work/fire-feature-480.jpg 480w, work/fire-feature-800.jpg 800w, work/fire-feature-1200.jpg 1200w" sizes="(max-width: 640px) calc(50vw - 1.7rem), 340px" width="1200" height="1200" alt="A gas fire feature burning in a ring of boulders on a stone patio" loading="lazy" decoding="async"></picture><figcaption>Gas line &amp; fire feature.</figcaption></figure>
+        <figure><picture><source type="image/webp" srcset="work/roof-framing-480.webp 480w, work/roof-framing-800.webp 800w, work/roof-framing-1200.webp 1200w" sizes="(max-width: 640px) calc(50vw - 1.7rem), 340px"><img src="work/roof-framing-800.jpg" srcset="work/roof-framing-480.jpg 480w, work/roof-framing-800.jpg 800w, work/roof-framing-1200.jpg 1200w" sizes="(max-width: 640px) calc(50vw - 1.7rem), 340px" width="1200" height="1200" alt="New roof joists going in across a commercial building" loading="lazy" decoding="async"></picture><figcaption>Roof framing.</figcaption></figure>
+      </div>
+      <ul class="deal-list how-list">
+        <li><b>I walk it with you.</b> Same as anything else &mdash; I come look, we talk
+        it through.</li>
+        <li><b>One written scope, one price.</b> You&rsquo;ll know the number before I
+        start &mdash; same as always.</li>
+        <li><b>I run the trades.</b> Electrician, plumber, whoever it takes. You deal
+        with one person.</li>
+      </ul>
+
+      <div class="cta-row">
+        <a class="btn primary" href="#request">Request a hand</a>
+      </div>
     </div>
   </section>
 
@@ -675,5 +882,28 @@
   </div>
 </footer>
 
+
+<nav class="quickbar" aria-label="Call or text Jared">
+  <a class="call" href="tel:+13176614048">Call Jared</a>
+  <a href="sms:+13176614048?&amp;body=Hi%20Jared%20%E2%80%94%20I%27ve%20got%20a%20little%20job%20for%20you%3A%20">Text Jared</a>
+</nav>
+<script>
+  // Show the phone bar only while neither the hero (it has its own button) nor
+  // the form/footer (they have the number) is on screen.
+  (function () {
+    var bar = document.querySelector('.quickbar');
+    if (!bar || !('IntersectionObserver' in window)) return;
+    var seen = new Map();
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { seen.set(e.target, e.isIntersecting); });
+      var anyVisible = false;
+      seen.forEach(function (v) { if (v) anyVisible = true; });
+      bar.classList.toggle('show', !anyVisible);
+    });
+    ['.hero', '#request', 'footer'].forEach(function (s) {
+      var el = document.querySelector(s); if (el) io.observe(el);
+    });
+  })();
+</script>
 </body>
 </html>
