@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="canonical" href="https://unconventionalpossibilities.com/">
 <meta name="theme-color" content="#FAFAF7">
-<title>Jared — Your Neighborhood Handyman | Warfleigh &amp; Broad Ripple, Indianapolis</title>
+<title>Jared — Your Neighborhood Handyman | North Indy, Carmel, Fishers &amp; Westfield</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23F2B90D'/%3E%3Ctext x='32' y='47' font-family='Arial Narrow,Arial,sans-serif' font-size='42' font-weight='bold' text-anchor='middle' fill='%23212821'%3EJK%3C/text%3E%3C/svg%3E">
-<meta name="description" content="Jared Kempson is the handyman down the street in Warfleigh, Indianapolis. No trip fee, fast estimates on small jobs, honest prices. Serving Warfleigh, Broad Ripple & Meridian-Kessler.">
+<meta name="description" content="Jared Kempson is the handyman down the street in Warfleigh, Indianapolis. No trip fee, fast estimates on small jobs, honest prices. Serving Warfleigh, Broad Ripple, Meridian-Kessler, Carmel, Fishers & Westfield.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Jared — Your Neighborhood Handyman">
-<meta property="og:description" content="No trip fee, fast estimates on small jobs, honest prices. Serving Warfleigh, Broad Ripple & Meridian-Kessler.">
+<meta property="og:description" content="No trip fee, fast estimates on small jobs, honest prices. Serving Warfleigh, Broad Ripple, Meridian-Kessler, Carmel, Fishers & Westfield.">
 <meta property="og:url" content="https://unconventionalpossibilities.com/">
 <meta property="og:image" content="https://unconventionalpossibilities.com/social.png">
 <meta property="og:image:width" content="1200">
@@ -27,7 +27,7 @@
   "email": "jared@unconventionalpossibilities.com",
   "telephone": "+13176614048",
   "url": "https://unconventionalpossibilities.com",
-  "areaServed": ["Warfleigh, Indianapolis IN", "Broad Ripple, Indianapolis IN", "Meridian-Kessler, Indianapolis IN"],
+  "areaServed": ["Warfleigh, Indianapolis IN", "Broad Ripple, Indianapolis IN", "Meridian-Kessler, Indianapolis IN", "Carmel, IN", "Fishers, IN", "Westfield, IN"],
   "founder": { "@type": "Person", "name": "Jared Kempson" }
 }
 </script>
@@ -627,6 +627,61 @@
     .sayings .q + .q { opacity: 1; margin-top: 1.25rem; }
   }
 
+  /* ---------- 2026-10-14 PM feedback pass ---------- */
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
+             clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+  .area span { white-space: nowrap; }   /* six areas now: wrap between names, never inside one */
+
+  /* Section headings in the headline's voice: lowercase, condensed, yellow marker.
+     Jared: "the deal looks out of place ... lowercase and similar to neighbor, but smaller." */
+  .sect { font-family: var(--display); font-weight: 700; font-size: clamp(2.2rem, 8vw, 3.1rem);
+          line-height: 1; letter-spacing: -0.005em; margin-bottom: 1.5rem; isolation: isolate; }
+  .sect .mark { position: relative; white-space: nowrap; }
+  .sect .mark::before { content: ""; position: absolute; left: -.08em; right: -.08em; bottom: .04em;
+                        height: .42em; background: var(--yellow); z-index: -1; transform: rotate(-.6deg); }
+
+  /* "the small stuff" <-> "the big stuff": same morph as Hi/Hello, slower, and the
+     list under it trades places too. Both lists stack in one grid cell, so the
+     section never changes height. */
+  .stuff-word { display: inline-block; position: relative; width: var(--w-small, 2.2em);
+                clip-path: inset(-.4em -.02em -.4em 0); transition: width 1.8s cubic-bezier(.65, 0, .35, 1); }
+  .stuff-word .w-small, .stuff-word::after { transition: opacity 1.4s ease, filter 1.4s ease; }
+  .stuff-word::after { content: "big"; content: "big" / ""; position: absolute; left: 0; top: 0;
+                       opacity: 0; filter: blur(.05em); }
+  #services.big .stuff-word { width: var(--w-big, 1.3em); }
+  #services.big .w-small { opacity: 0; filter: blur(.05em); }
+  #services.big .stuff-word::after { opacity: 1; filter: none; }
+  .stuff-lists { display: grid; }
+  .stuff-lists > .svc-cols { grid-area: 1 / 1; transition: opacity 1.4s ease; }
+  .stuff-big, #services.big .stuff-small { opacity: 0; }
+  #services.big .stuff-big { opacity: 1; }
+  .stuff-alt-label { display: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .stuff-lists { display: block; }
+    .stuff-big { opacity: 1; }
+    .stuff-alt-label { display: block; font-family: var(--display); font-weight: 700; font-size: 1.6rem; margin: 1.75rem 0 .4rem; }
+  }
+
+  /* Deck strip heading + grid: 2 across on tablets, 4 on desktops, so every
+     before/after pair stays side by side on one row. */
+  .job h3 .hint { font-family: var(--display); font-weight: 500; font-size: 1.1rem; color: var(--quiet); }
+  @media (min-width: 641px) {
+    .job h3 .hint { display: none; }
+    #work .strip { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1000px) { #work .strip { grid-template-columns: repeat(4, 1fr); } }
+
+  /* Desktop portrait: was a 100px stamp beside a 90px headline (Jared: "the
+     proportion looks off"). Now a real photo column; on wide screens it steps
+     out past the text column the way the job photos do. */
+  @media (min-width: 641px) {
+    .hero-grid { grid-template-columns: minmax(0, 1fr) 11rem; gap: 2rem; }
+    .hero-photo { width: 100%; justify-self: stretch; margin-top: .5rem; }
+  }
+  @media (min-width: 1000px) {
+    .hero-grid { grid-template-columns: minmax(0, 1fr) 15rem; gap: 3rem; margin-right: -9rem; }
+  }
+
   /* ---------- phone text bar ---------- */
   /* Appears once the hero (with its own buttons) scrolls away; gets out of the
      way at the form and footer. Phones only (sms: links are dead on desktops).
@@ -668,7 +723,7 @@
           <h1 class="greet">H<span class="greet-tail"><span class="g-i">i</span></span>, <span class="mark">neighbor</span>.</h1>
           <p class="intro">I&rsquo;m Jared &mdash; the handyman down the street.
           Small jobs are my specialty.</p>
-          <p class="area">Warfleigh &middot; Broad Ripple &middot; Meridian-Kessler</p>
+          <p class="area"><span>Warfleigh</span> &middot; <span>Broad Ripple</span> &middot; <span>Meridian-Kessler</span> &middot; <span>Carmel</span> &middot; <span>Fishers</span> &middot; <span>Westfield</span></p>
           <div class="cta-row">
             <a class="btn primary" href="#request">Request a hand</a>
           </div>
@@ -678,10 +733,10 @@
         <!-- Small files + lazy: this frame is display:none on phones, and lazy images
              inside a hidden box never download, so phones skip all four. -->
         <div class="hero-photo">
-          <img src="jared-sm.jpg" width="240" height="300" loading="lazy" alt="Jared Kempson, your neighborhood handyman">
-          <img class="rot" style="--d:12s" src="jared-3-sm.jpg" width="240" height="300" loading="lazy" alt="" aria-hidden="true">
-          <img class="rot" style="--d:24s" src="jared-2-sm.jpg" width="240" height="300" loading="lazy" alt="" aria-hidden="true">
-          <img class="rot" style="--d:36s" src="jared-4-sm.jpg" width="240" height="300" loading="lazy" alt="" aria-hidden="true">
+          <img src="jared-md.jpg" width="480" height="600" loading="lazy" alt="Jared Kempson, your neighborhood handyman">
+          <img class="rot" style="--d:12s" src="jared-3-md.jpg" width="480" height="600" loading="lazy" alt="" aria-hidden="true">
+          <img class="rot" style="--d:24s" src="jared-2-md.jpg" width="480" height="600" loading="lazy" alt="" aria-hidden="true">
+          <img class="rot" style="--d:36s" src="jared-4-md.jpg" width="480" height="600" loading="lazy" alt="" aria-hidden="true">
         </div>
       </div>
     </div>
@@ -690,7 +745,7 @@
 
   <section id="deal">
     <div class="wrap">
-      <span class="label">The deal</span>
+      <h2 class="sect">the <span class="mark">deal</span></h2>
       <ul class="deal-list">
         <li><b>No trip fee.</b> I live here. Coming out to look at your problem isn&rsquo;t a
         trip. It&rsquo;s a walk. Happy to stop by and talk it through.</li>
@@ -700,6 +755,8 @@
         once I&rsquo;m in there, I tell you first.</li>
         <li><b>I walk it with you.</b> Big job or small, I come look and we figure it out
         together.</li>
+        <li><b>Communication is key.</b> I update you when something changes. I&rsquo;m clear
+        and courteous.</li>
       </ul>
     </div>
   </section>
@@ -710,21 +767,16 @@
       <h2 class="subhead">Real jobs, start to finish.</h2>
 
       <article class="job">
-        <h3>A whole deck, rebuilt.</h3>
-        <p>Front and back: new boards, new stairs, herringbone skirting and black
-        aluminum railings. Same house, same spot. May, then October.</p>
-        <div class="pair pair-wide">
-          <figure><span class="tag">Before</span><picture><source type="image/webp" srcset="work/deck-front-before-480.webp 480w, work/deck-front-before-800.webp 800w, work/deck-front-before-1200.webp 1200w" sizes="(max-width: 640px) calc(100vw - 2.5rem), 480px"><img src="work/deck-front-before-800.jpg" srcset="work/deck-front-before-480.jpg 480w, work/deck-front-before-800.jpg 800w, work/deck-front-before-1200.jpg 1200w" sizes="(max-width: 640px) calc(100vw - 2.5rem), 480px" width="1200" height="900" alt="The old front deck and steps, weathered grey, seen from the driveway" loading="lazy" decoding="async"></picture><figcaption>May.</figcaption></figure>
-          <figure><span class="tag after">After</span><picture><source type="image/webp" srcset="work/deck-front-after-480.webp 480w, work/deck-front-after-800.webp 800w, work/deck-front-after-1200.webp 1200w" sizes="(max-width: 640px) calc(100vw - 2.5rem), 480px"><img src="work/deck-front-after-800.jpg" srcset="work/deck-front-after-480.jpg 480w, work/deck-front-after-800.jpg 800w, work/deck-front-after-1200.jpg 1200w" sizes="(max-width: 640px) calc(100vw - 2.5rem), 480px" width="1200" height="900" alt="The same front deck rebuilt, with black railings and new steps, seen from the driveway" loading="lazy" decoding="async"></picture><figcaption>October.</figcaption></figure>
-        </div>
-        <p class="more">More of this deck <span class="hint">&middot; swipe &rarr;</span></p>
-        <div class="strip" role="region" aria-label="More photos of the deck rebuild" tabindex="0">
-          <figure><span class="tag">Before</span><picture><source type="image/webp" srcset="work/deck-back-before-480.webp 480w, work/deck-back-before-800.webp 800w, work/deck-back-before-1200.webp 1200w" sizes="(max-width: 640px) 78vw, 320px"><img src="work/deck-back-before-800.jpg" srcset="work/deck-back-before-480.jpg 480w, work/deck-back-before-800.jpg 800w, work/deck-back-before-1200.jpg 1200w" sizes="(max-width: 640px) 78vw, 320px" width="1200" height="1200" alt="The old back deck and steps, weathered grey" loading="lazy" decoding="async"></picture><figcaption>The back deck, May.</figcaption></figure>
-          <figure><span class="tag after">After</span><picture><source type="image/webp" srcset="work/deck-back-after-480.webp 480w, work/deck-back-after-800.webp 800w, work/deck-back-after-1200.webp 1200w" sizes="(max-width: 640px) 78vw, 320px"><img src="work/deck-back-after-800.jpg" srcset="work/deck-back-after-480.jpg 480w, work/deck-back-after-800.jpg 800w, work/deck-back-after-1200.jpg 1200w" sizes="(max-width: 640px) 78vw, 320px" width="1200" height="1200" alt="The rebuilt back deck with herringbone skirting, black railings and pergola" loading="lazy" decoding="async"></picture><figcaption>The back deck, October.</figcaption></figure>
-          <figure><picture><source type="image/webp" srcset="work/deck-skirting-480.webp 480w, work/deck-skirting-800.webp 800w, work/deck-skirting-1200.webp 1200w" sizes="(max-width: 640px) 78vw, 320px"><img src="work/deck-skirting-800.jpg" srcset="work/deck-skirting-480.jpg 480w, work/deck-skirting-800.jpg 800w, work/deck-skirting-1200.jpg 1200w" sizes="(max-width: 640px) 78vw, 320px" width="1200" height="1200" alt="Close-up of diagonal herringbone skirting under a black aluminum railing" loading="lazy" decoding="async"></picture><figcaption>Herringbone skirting, up close.</figcaption></figure>
-          <figure><span class="tag">Before</span><picture><source type="image/webp" srcset="work/deck-stairs-before-480.webp 480w, work/deck-stairs-before-800.webp 800w, work/deck-stairs-before-1200.webp 1200w" sizes="(max-width: 640px) 78vw, 320px"><img src="work/deck-stairs-before-800.jpg" srcset="work/deck-stairs-before-480.jpg 480w, work/deck-stairs-before-800.jpg 800w, work/deck-stairs-before-1200.jpg 1200w" sizes="(max-width: 640px) 78vw, 320px" width="1200" height="1200" alt="Old deck steps down to a worn gravel path" loading="lazy" decoding="async"></picture><figcaption>The back stairs and path.</figcaption></figure>
-          <figure><span class="tag after">After</span><picture><source type="image/webp" srcset="work/deck-stairs-after-480.webp 480w, work/deck-stairs-after-800.webp 800w, work/deck-stairs-after-1200.webp 1200w" sizes="(max-width: 640px) 78vw, 320px"><img src="work/deck-stairs-after-800.jpg" srcset="work/deck-stairs-after-480.jpg 480w, work/deck-stairs-after-800.jpg 800w, work/deck-stairs-after-1200.jpg 1200w" sizes="(max-width: 640px) 78vw, 320px" width="1200" height="1200" alt="New stairs with black railings down to a re-edged gravel path" loading="lazy" decoding="async"></picture><figcaption>New stairs, re-edged path.</figcaption></figure>
-          <figure><picture><source type="image/webp" srcset="work/deck-midbuild-480.webp 480w, work/deck-midbuild-800.webp 800w, work/deck-midbuild-1200.webp 1200w" sizes="(max-width: 640px) 78vw, 320px"><img src="work/deck-midbuild-800.jpg" srcset="work/deck-midbuild-480.jpg 480w, work/deck-midbuild-800.jpg 800w, work/deck-midbuild-1200.jpg 1200w" sizes="(max-width: 640px) 78vw, 320px" width="1200" height="1200" alt="New deck boards down under the pergola, tools still out" loading="lazy" decoding="async"></picture><figcaption>Mid-build: boards down, railings next.</figcaption></figure>
+        <h3>Deck remodel and repair <span class="hint">&middot; swipe &rarr;</span></h3>
+        <div class="strip" role="region" aria-label="Deck remodel and repair photos" tabindex="0">
+          <figure><span class="tag">Before</span><picture><source type="image/webp" srcset="work/deck-front-before-sq-480.webp 480w, work/deck-front-before-sq-800.webp 800w, work/deck-front-before-sq-1200.webp 1200w" sizes="(max-width: 640px) 78vw, (max-width: 999px) 45vw, 240px"><img src="work/deck-front-before-sq-800.jpg" srcset="work/deck-front-before-sq-480.jpg 480w, work/deck-front-before-sq-800.jpg 800w, work/deck-front-before-sq-1200.jpg 1200w" sizes="(max-width: 640px) 78vw, (max-width: 999px) 45vw, 240px" width="1200" height="1200" alt="The old front deck and steps, weathered grey, seen from the driveway" loading="lazy" decoding="async"></picture><figcaption>Front deck</figcaption></figure>
+          <figure><span class="tag after">After</span><picture><source type="image/webp" srcset="work/deck-front-after-sq-480.webp 480w, work/deck-front-after-sq-800.webp 800w, work/deck-front-after-sq-1200.webp 1200w" sizes="(max-width: 640px) 78vw, (max-width: 999px) 45vw, 240px"><img src="work/deck-front-after-sq-800.jpg" srcset="work/deck-front-after-sq-480.jpg 480w, work/deck-front-after-sq-800.jpg 800w, work/deck-front-after-sq-1200.jpg 1200w" sizes="(max-width: 640px) 78vw, (max-width: 999px) 45vw, 240px" width="1200" height="1200" alt="The same front deck rebuilt, with black railings and new steps" loading="lazy" decoding="async"></picture><figcaption>Front deck</figcaption></figure>
+          <figure><span class="tag">Before</span><picture><source type="image/webp" srcset="work/deck-back-before-480.webp 480w, work/deck-back-before-800.webp 800w, work/deck-back-before-1200.webp 1200w" sizes="(max-width: 640px) 78vw, (max-width: 999px) 45vw, 240px"><img src="work/deck-back-before-800.jpg" srcset="work/deck-back-before-480.jpg 480w, work/deck-back-before-800.jpg 800w, work/deck-back-before-1200.jpg 1200w" sizes="(max-width: 640px) 78vw, (max-width: 999px) 45vw, 240px" width="1200" height="1200" alt="The old back deck and steps, weathered grey" loading="lazy" decoding="async"></picture><figcaption>Back deck</figcaption></figure>
+          <figure><span class="tag after">After</span><picture><source type="image/webp" srcset="work/deck-back-after-480.webp 480w, work/deck-back-after-800.webp 800w, work/deck-back-after-1200.webp 1200w" sizes="(max-width: 640px) 78vw, (max-width: 999px) 45vw, 240px"><img src="work/deck-back-after-800.jpg" srcset="work/deck-back-after-480.jpg 480w, work/deck-back-after-800.jpg 800w, work/deck-back-after-1200.jpg 1200w" sizes="(max-width: 640px) 78vw, (max-width: 999px) 45vw, 240px" width="1200" height="1200" alt="The rebuilt back deck with herringbone skirting, black railings and pergola" loading="lazy" decoding="async"></picture><figcaption>Back deck</figcaption></figure>
+          <figure><span class="tag">Before</span><picture><source type="image/webp" srcset="work/deck-stairs-before-480.webp 480w, work/deck-stairs-before-800.webp 800w, work/deck-stairs-before-1200.webp 1200w" sizes="(max-width: 640px) 78vw, (max-width: 999px) 45vw, 240px"><img src="work/deck-stairs-before-800.jpg" srcset="work/deck-stairs-before-480.jpg 480w, work/deck-stairs-before-800.jpg 800w, work/deck-stairs-before-1200.jpg 1200w" sizes="(max-width: 640px) 78vw, (max-width: 999px) 45vw, 240px" width="1200" height="1200" alt="Old deck steps down to a worn gravel path" loading="lazy" decoding="async"></picture><figcaption>Back stairs</figcaption></figure>
+          <figure><span class="tag after">After</span><picture><source type="image/webp" srcset="work/deck-stairs-after-480.webp 480w, work/deck-stairs-after-800.webp 800w, work/deck-stairs-after-1200.webp 1200w" sizes="(max-width: 640px) 78vw, (max-width: 999px) 45vw, 240px"><img src="work/deck-stairs-after-800.jpg" srcset="work/deck-stairs-after-480.jpg 480w, work/deck-stairs-after-800.jpg 800w, work/deck-stairs-after-1200.jpg 1200w" sizes="(max-width: 640px) 78vw, (max-width: 999px) 45vw, 240px" width="1200" height="1200" alt="New stairs with black railings down to a re-edged gravel path" loading="lazy" decoding="async"></picture><figcaption>Back stairs</figcaption></figure>
+          <figure><picture><source type="image/webp" srcset="work/deck-skirting-480.webp 480w, work/deck-skirting-800.webp 800w, work/deck-skirting-1200.webp 1200w" sizes="(max-width: 640px) 78vw, (max-width: 999px) 45vw, 240px"><img src="work/deck-skirting-800.jpg" srcset="work/deck-skirting-480.jpg 480w, work/deck-skirting-800.jpg 800w, work/deck-skirting-1200.jpg 1200w" sizes="(max-width: 640px) 78vw, (max-width: 999px) 45vw, 240px" width="1200" height="1200" alt="Close-up of diagonal herringbone skirting under a black aluminum railing" loading="lazy" decoding="async"></picture><figcaption>Herringbone skirting</figcaption></figure>
+          <figure><picture><source type="image/webp" srcset="work/deck-midbuild-480.webp 480w, work/deck-midbuild-800.webp 800w, work/deck-midbuild-1200.webp 1200w" sizes="(max-width: 640px) 78vw, (max-width: 999px) 45vw, 240px"><img src="work/deck-midbuild-800.jpg" srcset="work/deck-midbuild-480.jpg 480w, work/deck-midbuild-800.jpg 800w, work/deck-midbuild-1200.jpg 1200w" sizes="(max-width: 640px) 78vw, (max-width: 999px) 45vw, 240px" width="1200" height="1200" alt="New deck boards down under the pergola, tools still out" loading="lazy" decoding="async"></picture><figcaption>Mid-build</figcaption></figure>
         </div>
       </article>
 
@@ -743,8 +795,9 @@
 
   <section id="services">
     <div class="wrap">
-      <span class="label">The small stuff (my specialty)</span>
-      <div class="svc-cols">
+      <h2 class="sect stuff-head"><span class="sr-only">The small stuff and the big stuff</span><span aria-hidden="true">the <span class="mark"><span class="stuff-word"><span class="w-small">small</span></span> stuff</span></span></h2>
+      <div class="stuff-lists">
+        <div class="svc-cols stuff-small">
         <ul>
           <li>Shelves, curtain rods &amp; TV mounting</li>
           <li>Pictures hung level the first time</li>
@@ -757,6 +810,20 @@
           <li>Gutter &amp; yard cleanup days</li>
           <li>Small carpentry &amp; repairs</li>
         </ul>
+        </div>
+        <p class="stuff-alt-label" aria-hidden="true">the big stuff</p>
+        <div class="svc-cols stuff-big">
+        <ul>
+          <li>Kitchen remodels</li>
+          <li>Bathroom refreshes &amp; remodels</li>
+          <li>Full deck builds &mdash; railings, stairs, skirting</li>
+          <li>Fences</li>
+          <li>Roof framing</li>
+          <li>Gas lines &amp; fire features</li>
+          <li>Water heater replacement</li>
+          <li>Office build-outs &mdash; walls, outlets, doors</li>
+        </ul>
+        </div>
       </div>
       <p class="svc-note">And the odd jobs that don&rsquo;t fit any category:
       <em>unconventional possibilities</em> are kind of my thing. Bigger work too: decks,
@@ -773,16 +840,6 @@
       <p class="lede">Full remodels, not just the small stuff. Same guy, same straight
       prices &mdash; just more of it.</p>
 
-      <div class="svc-cols">
-        <ul>
-          <li>Full deck builds &mdash; railings, stairs, skirting</li>
-          <li>Roof framing</li>
-          <li>Gas lines &amp; fire features</li>
-          <li>Water heater replacement</li>
-          <li>Bathroom refreshes</li>
-          <li>Office build-outs &mdash; walls, outlets, doors</li>
-        </ul>
-      </div>
 
 
       <div class="proof">
@@ -827,7 +884,7 @@
         </div>
         <div class="about-text">
           <p>I&rsquo;m Jared Kempson. Before I fixed houses, I spent a decade as a nurse
-          &mdash; some of it at Riley Children&rsquo;s &mdash; which turns out to be perfect
+          &mdash; most of it at Riley Children&rsquo;s Hospital &mdash; which turns out to be perfect
           training for this work: show up calm, listen first, don&rsquo;t make a mess, tell
           the truth.</p>
           <p>I&rsquo;ve re-built two houses, I&rsquo;m raising four kids (still in progress), and
@@ -917,7 +974,7 @@
 <footer>
   <div class="wrap">
     <span>Unconventional Possibilities LLC &middot; Indianapolis, IN</span>
-    <span>Serving Warfleigh, Broad Ripple &amp; Meridian-Kessler</span>
+    <span>Serving Warfleigh, Broad Ripple, Meridian-Kessler, Carmel, Fishers &amp; Westfield</span>
     <span><a class="sms-mobile" href="sms:+13176614048?&amp;body=Hi%20Jared%20%E2%80%94%20I%27ve%20got%20a%20little%20job%20for%20you%3A%20">Text (317) 661-4048</a><span class="sms-desktop">Text (317) 661-4048</span> &middot; <a href="mailto:jared@unconventionalpossibilities.com">jared@unconventionalpossibilities.com</a></span>
     <span class="legal">&copy; 2026 Unconventional Possibilities LLC. Your friendly neighborhood handyman.</span>
   </div>
@@ -948,18 +1005,21 @@
 </script>
 
 <script>
-  // Hi <-> Hello and the two sayings: slow swaps, only while on screen, never
-  // under reduced motion. Widths are measured once fonts are in.
+  // Hi <-> Hello, small <-> big stuff, and the two sayings: slow swaps, only while
+  // on screen, never under reduced motion. Widths are measured once fonts are in.
   (function () {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var h1 = document.querySelector('.greet'), say = document.querySelector('.sayings');
-    function measure() {
-      if (!h1) return;
-      var fs = parseFloat(getComputedStyle(h1).fontSize), probe = document.createElement('span');
+    var h1 = document.querySelector('.greet'), say = document.querySelector('.sayings'),
+        svc = document.getElementById('services'), stuff = document.querySelector('.stuff-head');
+    function widths(el, pairs) {
+      if (!el) return;
+      var fs = parseFloat(getComputedStyle(el).fontSize), probe = document.createElement('span');
       probe.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap';
-      h1.appendChild(probe);
-      probe.textContent = 'i'; h1.style.setProperty('--w-i', (probe.getBoundingClientRect().width / fs) + 'em');
-      probe.textContent = 'ello'; h1.style.setProperty('--w-ello', (probe.getBoundingClientRect().width / fs) + 'em');
+      el.appendChild(probe);
+      pairs.forEach(function (p) {
+        probe.textContent = p[1];
+        el.style.setProperty(p[0], (probe.getBoundingClientRect().width / fs) + 'em');
+      });
       probe.remove();
     }
     function loop(el, cls, every, delay) {
@@ -973,8 +1033,10 @@
       }, delay);
     }
     (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () {
-      measure();
+      widths(h1, [['--w-i', 'i'], ['--w-ello', 'ello']]);
+      widths(stuff, [['--w-small', 'small'], ['--w-big', 'big']]);
       loop(h1, 'hello', 6500, 1500);
+      loop(svc, 'big', 9000, 3000);
       loop(say, 'alt', 7000, 0);
     });
   })();
