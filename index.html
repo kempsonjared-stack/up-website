@@ -698,8 +698,11 @@
      jumps), each line sitting at the bottom so it always hugs the list. Reduced
      motion: only "good help is next door", and the cell collapses to it. */
   .slogan-stack { display: grid; }
-  .slogan { grid-area: 1 / 1; align-self: end; opacity: 0; transition: opacity 2.5s ease; }
+  .slogan { grid-area: 1 / 1; align-self: start; opacity: 0; transition: opacity 2.5s ease; }
   .slogan.on { opacity: 1; }
+  /* Jared 10/15: the empty line (second slogan wraps on phones) sat ABOVE the
+     heading and read as a big gap; anchor to the top and trim the section. */
+  #deal { padding-top: 2rem; }
   @media (prefers-reduced-motion: reduce) { .slogan:not(:first-child) { display: none; } }
 
   /* ---------- phone text bar ---------- */
@@ -765,7 +768,7 @@
 
   <section id="deal">
     <div class="wrap">
-      <h2 class="sect slogans"><span class="sr-only">Good help is next door</span><span class="slogan-stack" aria-hidden="true"><span class="slogan on">good help is <span class="mark">next door</span></span><span class="slogan">your friendly <span class="mark">neighborhood handyman</span></span></span></h2>
+      <h2 class="sect slogans"><span class="sr-only">Good help is next door</span><span class="slogan-stack" aria-hidden="true"><span class="slogan on">good help is <span class="mark">next door</span></span><span class="slogan">your friendly neighborhood <span class="mark">handyman</span></span></span></h2>
       <ul class="deal-list">
         <li><b>No trip fee.</b> I live here. Coming out to look at your problem isn&rsquo;t a
         trip. It&rsquo;s a walk. Happy to stop by and talk it through.</li>
