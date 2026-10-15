@@ -693,6 +693,15 @@
     .hero .or-text { max-width: calc(100% - 7.25rem); }
   }
 
+  /* ---------- 2026-10-15: slogans rotate in the "good help is next door" spot ---------- */
+  /* Stacked in one grid cell (height = the longest slogan, so the list below never
+     jumps), each line sitting at the bottom so it always hugs the list. Reduced
+     motion: only "good help is next door", and the cell collapses to it. */
+  .slogan-stack { display: grid; }
+  .slogan { grid-area: 1 / 1; align-self: end; opacity: 0; transition: opacity 1.2s ease; }
+  .slogan.on { opacity: 1; }
+  @media (prefers-reduced-motion: reduce) { .slogan:not(:first-child) { display: none; } }
+
   /* ---------- phone text bar ---------- */
   /* Appears once the hero (with its own buttons) scrolls away; gets out of the
      way at the form and footer. Phones only (sms: links are dead on desktops).
@@ -756,7 +765,7 @@
 
   <section id="deal">
     <div class="wrap">
-      <h2 class="sect">good help is <span class="mark">next door</span></h2>
+      <h2 class="sect slogans"><span class="sr-only">Good help is next door</span><span class="slogan-stack" aria-hidden="true"><span class="slogan on">good help is <span class="mark">next door</span></span><span class="slogan">i&rsquo;m not free &mdash; but i&rsquo;m <span class="mark">not as expensive</span></span><span class="slogan">it&rsquo;s cheaper to have it <span class="mark">done right once</span> than done wrong twice</span></span></h2>
       <ul class="deal-list">
         <li><b>No trip fee.</b> I live here. Coming out to look at your problem isn&rsquo;t a
         trip. It&rsquo;s a walk. Happy to stop by and talk it through.</li>
@@ -1068,11 +1077,25 @@
         setInterval(function () { if (visible && !document.hidden) el.classList.toggle(cls); }, every);
       }, delay);
     }
+    function cycle(el, sel, every, delay) {
+      if (!el) return;
+      var items = el.querySelectorAll(sel), i = 0, visible = true;
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (e) { visible = e[0].isIntersecting; }).observe(el);
+      }
+      setTimeout(function () {
+        setInterval(function () {
+          if (!visible || document.hidden) return;
+          items[i].classList.remove('on'); i = (i + 1) % items.length; items[i].classList.add('on');
+        }, every);
+      }, delay);
+    }
     (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () {
       widths(h1, [['--w-i', 'i'], ['--w-ello', 'ello']]);
       widths(stuff, [['--w-small', 'small'], ['--w-big', 'big']]);
       loop(h1, 'hello', 6500, 1500);
-      loop(svc, 'big', 9000, 3000);
+      loop(svc, 'big', 7000, 3000);   // Jared 10/15: 'a little bit faster' (was 9 s)
+      cycle(document.querySelector('.slogans'), '.slogan', 7000, 4000);
       loop(say, 'alt', 7000, 0);
     });
   })();
