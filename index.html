@@ -635,7 +635,8 @@
   /* Section headings in the headline's voice: lowercase, condensed, yellow marker.
      Jared: "the deal looks out of place ... lowercase and similar to neighbor, but smaller." */
   .sect { font-family: var(--display); font-weight: 700; font-size: clamp(2.2rem, 8vw, 3.1rem);
-          line-height: 1; letter-spacing: -0.005em; margin-bottom: 1.5rem; isolation: isolate; }
+          line-height: 1.05; letter-spacing: -0.005em; margin-bottom: 1.5rem; isolation: isolate;
+          text-wrap: balance; }
   .sect .mark { position: relative; white-space: nowrap; }
   .sect .mark::before { content: ""; position: absolute; left: -.08em; right: -.08em; bottom: .04em;
                         height: .42em; background: var(--yellow); z-index: -1; transform: rotate(-.6deg); }
@@ -745,7 +746,7 @@
 
   <section id="deal">
     <div class="wrap">
-      <h2 class="sect">the <span class="mark">deal</span></h2>
+      <h2 class="sect">good help is <span class="mark">next door</span></h2>
       <ul class="deal-list">
         <li><b>No trip fee.</b> I live here. Coming out to look at your problem isn&rsquo;t a
         trip. It&rsquo;s a walk. Happy to stop by and talk it through.</li>
