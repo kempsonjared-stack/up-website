@@ -698,7 +698,7 @@
      jumps), each line sitting at the bottom so it always hugs the list. Reduced
      motion: only "good help is next door", and the cell collapses to it. */
   .slogan-stack { display: grid; }
-  .slogan { grid-area: 1 / 1; align-self: end; opacity: 0; transition: opacity 1.2s ease; }
+  .slogan { grid-area: 1 / 1; align-self: end; opacity: 0; transition: opacity 2.5s ease; }
   .slogan.on { opacity: 1; }
   @media (prefers-reduced-motion: reduce) { .slogan:not(:first-child) { display: none; } }
 
@@ -765,7 +765,7 @@
 
   <section id="deal">
     <div class="wrap">
-      <h2 class="sect slogans"><span class="sr-only">Good help is next door</span><span class="slogan-stack" aria-hidden="true"><span class="slogan on">good help is <span class="mark">next door</span></span><span class="slogan">i&rsquo;m not free &mdash; but i&rsquo;m <span class="mark">not as expensive</span></span><span class="slogan">it&rsquo;s cheaper to have it <span class="mark">done right once</span> than done wrong twice</span></span></h2>
+      <h2 class="sect slogans"><span class="sr-only">Good help is next door</span><span class="slogan-stack" aria-hidden="true"><span class="slogan on">good help is <span class="mark">next door</span></span><span class="slogan">your friendly <span class="mark">neighborhood handyman</span></span></span></h2>
       <ul class="deal-list">
         <li><b>No trip fee.</b> I live here. Coming out to look at your problem isn&rsquo;t a
         trip. It&rsquo;s a walk. Happy to stop by and talk it through.</li>
@@ -1095,7 +1095,7 @@
       widths(stuff, [['--w-small', 'small'], ['--w-big', 'big']]);
       loop(h1, 'hello', 6500, 1500);
       loop(svc, 'big', 7000, 3000);   // Jared 10/15: 'a little bit faster' (was 9 s)
-      cycle(document.querySelector('.slogans'), '.slogan', 7000, 4000);
+      cycle(document.querySelector('.slogans'), '.slogan', 20000, 8000);   // Jared 10/15: two slogans, 'really slow' (was 3 every 7 s)
       loop(say, 'alt', 7000, 0);
     });
   })();
