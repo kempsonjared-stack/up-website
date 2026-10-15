@@ -683,6 +683,16 @@
     .hero-grid { grid-template-columns: minmax(0, 1fr) 15rem; gap: 3rem; margin-right: -9rem; }
   }
 
+  /* ---------- 2026-10-15: small rotating portrait on phones ---------- */
+  /* Jared drew it to the right of "Request a hand" / "or text me". Pinned to the
+     bottom-right of the hero text; the text line beside it is kept narrower so
+     it wraps instead of running under the photo on small phones. */
+  .hero-grid { position: relative; }
+  @media (max-width: 640px) {
+    .hero-photo { display: block; position: absolute; right: 0; bottom: 0; width: 6.25rem; margin: 0; }
+    .hero .or-text { max-width: calc(100% - 7.25rem); }
+  }
+
   /* ---------- phone text bar ---------- */
   /* Appears once the hero (with its own buttons) scrolls away; gets out of the
      way at the form and footer. Phones only (sms: links are dead on desktops).
@@ -723,7 +733,7 @@
         <div>
           <h1 class="greet">H<span class="greet-tail"><span class="g-i">i</span></span>, <span class="mark">neighbor</span>.</h1>
           <p class="intro">I&rsquo;m Jared &mdash; the handyman down the street.
-          Small jobs are my specialty.</p>
+          Problem solving is my specialty.</p>
           <p class="area"><span>Warfleigh</span> &middot; <span>Broad Ripple</span> &middot; <span>Meridian-Kessler</span> &middot; <span>Carmel</span> &middot; <span>Fishers</span> &middot; <span>Westfield</span></p>
           <div class="cta-row">
             <a class="btn primary" href="#request">Request a hand</a>
@@ -731,13 +741,13 @@
           <p class="or-text">or text me:
             <a class="sms-mobile" href="sms:+13176614048?&amp;body=Hi%20Jared%20%E2%80%94%20I%27ve%20got%20a%20little%20job%20for%20you%3A%20">(317) 661-4048</a><span class="sms-desktop">(317) 661-4048</span></p>
         </div>
-        <!-- Small files + lazy: this frame is display:none on phones, and lazy images
-             inside a hidden box never download, so phones skip all four. -->
+        <!-- Desktop: the photo column. Phones (2026-10-15): a small version beside the
+             buttons, using the 240px files via srcset. -->
         <div class="hero-photo">
-          <img src="jared-md.jpg" width="480" height="600" loading="lazy" alt="Jared Kempson, your neighborhood handyman">
-          <img class="rot" style="--d:12s" src="jared-3-md.jpg" width="480" height="600" loading="lazy" alt="" aria-hidden="true">
-          <img class="rot" style="--d:24s" src="jared-2-md.jpg" width="480" height="600" loading="lazy" alt="" aria-hidden="true">
-          <img class="rot" style="--d:36s" src="jared-4-md.jpg" width="480" height="600" loading="lazy" alt="" aria-hidden="true">
+          <img src="jared-md.jpg" srcset="jared-sm.jpg 240w, jared-md.jpg 480w" sizes="(max-width: 640px) 100px, 240px" width="480" height="600" loading="lazy" alt="Jared Kempson, your neighborhood handyman">
+          <img class="rot" style="--d:12s" src="jared-3-md.jpg" srcset="jared-3-sm.jpg 240w, jared-3-md.jpg 480w" sizes="(max-width: 640px) 100px, 240px" width="480" height="600" loading="lazy" alt="" aria-hidden="true">
+          <img class="rot" style="--d:24s" src="jared-2-md.jpg" srcset="jared-2-sm.jpg 240w, jared-2-md.jpg 480w" sizes="(max-width: 640px) 100px, 240px" width="480" height="600" loading="lazy" alt="" aria-hidden="true">
+          <img class="rot" style="--d:36s" src="jared-4-md.jpg" srcset="jared-4-sm.jpg 240w, jared-4-md.jpg 480w" sizes="(max-width: 640px) 100px, 240px" width="480" height="600" loading="lazy" alt="" aria-hidden="true">
         </div>
       </div>
     </div>
