@@ -703,6 +703,10 @@
   /* Jared 10/15: the empty line (second slogan wraps on phones) sat ABOVE the
      heading and read as a big gap; anchor to the top and trim the section. */
   #deal { padding-top: 2rem; }
+  /* Jared 10/27: "too much white space" under the one-line slogan; move everything
+     below it up about a line WITHOUT the page jumping as the slogans swap. The stack
+     still reserves two lines; only the heading's bottom margin goes. */
+  .sect.slogans { margin-bottom: 0; }
   @media (prefers-reduced-motion: reduce) { .slogan:not(:first-child) { display: none; } }
 
   /* ---------- 2026-10-15: desktop before/after carousel ---------- */
