@@ -758,6 +758,21 @@
   @media (min-width: 641px) { .quickbar { display: none; } }
   @media (prefers-reduced-motion: reduce) { .quickbar, .quickbar.show { transition: none; } }
 </style>
+<!-- analytics:start -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8P2LQL3NEH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-8P2LQL3NEH', {anonymize_ip: true});
+  addEventListener('click', function (e) {
+    var a = e.target && e.target.closest && e.target.closest('a[href]'); if (!a) return;
+    var h = a.getAttribute('href') || '';
+    if (h.indexOf('sms:') === 0) gtag('event', 'text_tap', {link_text: (a.textContent || '').trim().slice(0, 40)});
+    else if (h.indexOf('mailto:') === 0) gtag('event', 'email_tap', {});
+  }, true);
+</script>
+<!-- analytics:end -->
 </head>
 <body>
 
